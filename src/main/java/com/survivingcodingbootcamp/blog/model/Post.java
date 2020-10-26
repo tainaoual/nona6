@@ -1,6 +1,7 @@
 package com.survivingcodingbootcamp.blog.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Post {
@@ -8,20 +9,39 @@ public class Post {
     @GeneratedValue
     private Long id;
     private String title;
+    private String authorName;
+    private String posts;
     @ManyToOne
     private Topic topic;
     @Lob
     private String content;
+    @ManyToMany(mappedBy ="posts")
+private Collection<HashTag>hashTags;
+
+    public Post(Collection<HashTag> hashTags) {
+        this.hashTags = hashTags;
+    }
+
+    public Collection<HashTag> getHashTags() {
+        return hashTags;
+    }
 
     protected Post() {
     }
-
-    public Post(String title, Topic topic, String content) {
+    public Post(String title, Topic topic, String content, String authorName) {
         this.title = title;
         this.topic = topic;
         this.content = content;
+        this.authorName = authorName;
     }
 
+    public String getPosts() {
+        return posts;
+    }
+
+    public Post(String posts) {
+        this.posts = posts;
+    }
     public Long getId() {
         return id;
     }
@@ -38,6 +58,9 @@ public class Post {
         return content;
     }
 
+    public String getAuthorName() {
+        return authorName;
+    }
     @Override
     public String toString() {
         return "Post{" +
@@ -45,6 +68,7 @@ public class Post {
                 ", title='" + title + '\'' +
                 ", topic=" + topic +
                 ", content='" + content + '\'' +
+                ", authorName='" + authorName + '\'' +
                 '}';
     }
 
@@ -55,18 +79,20 @@ public class Post {
 
         Post post = (Post) o;
 
-        if (id != null ? !id.equals(post.id) : post.id != null) return false;
-        if (title != null ? !title.equals(post.title) : post.title != null) return false;
-        if (topic != null ? !topic.equals(post.topic) : post.topic != null) return false;
-        return content != null ? content.equals(post.content) : post.content == null;
+        if (!id.equals(post.id)) return false;
+        if (!title.equals(post.title)) return false;
+        if (!topic.equals(post.topic)) return false;
+        if (!content.equals(post.content)) return false;
+        return authorName.equals(post.authorName);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (topic != null ? topic.hashCode() : 0);
-        result = 31 * result + (content != null ? content.hashCode() : 0);
+        int result = id.hashCode();
+        result = 31 * result + title.hashCode();
+        result = 31 * result + topic.hashCode();
+        result = 31 * result + content.hashCode();
+        result = 31 * result + authorName.hashCode();
         return result;
     }
 }

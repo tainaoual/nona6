@@ -14,6 +14,7 @@ public class PostStorageJpaImpl implements PostStorage {
 
     @Override
     public Iterable<Post> retrieveAllPosts() {
+
         return postRepo.findAll();
     }
 

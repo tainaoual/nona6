@@ -1,29 +1,36 @@
 package com.survivingcodingbootcamp.blog.storage;
 
-import com.survivingcodingbootcamp.blog.model.Post;
-import com.survivingcodingbootcamp.blog.storage.repository.PostRepository;
+import com.survivingcodingbootcamp.blog.model.HashTag;
+
+import com.survivingcodingbootcamp.blog.storage.repository.HashTagRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PostStorageJpaImpl implements PostStorage {
-    private PostRepository postRepo;
+public class HashTagStorageJpaImpl implements HashTagStorage {
+    private HashTagRepository hashtagRepo;
 
-    public PostStorageJpaImpl(PostRepository postRepo) {
-        this.postRepo = postRepo;
+    public HashTagStorageJpaImpl(HashTagRepository hashtagRepo) {
+        this.hashtagRepo = hashtagRepo;
     }
 
     @Override
-    public Iterable<Post> retrieveAllPosts() {
-        return postRepo.findAll();
+    public Iterable<HashTag> retrieveAllHashTags() {
+        return hashtagRepo.findAll();
     }
 
     @Override
-    public Post retrievePostById(long id) {
-        return postRepo.findById(id).get();
+    public Iterable<HashTag> retrieveAllHashTag() {
+        return hashtagRepo.findAll();
     }
 
     @Override
-    public void save(Post postToAdd) {
-        postRepo.save(postToAdd);
+    public HashTag retrieveHashTagById(long id) {
+        return hashtagRepo.findById(id).get();
+    }
+
+    @Override
+    public void save(HashTag hashtagToAdd) {
+        hashtagRepo.save(hashtagToAdd);
     }
 }
+
