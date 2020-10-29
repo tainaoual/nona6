@@ -1,3 +1,4 @@
+
 package com.survivingcodingbootcamp.blog.model;
 
 import javax.persistence.Entity;

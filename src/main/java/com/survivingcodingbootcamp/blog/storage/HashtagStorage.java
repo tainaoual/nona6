@@ -1,16 +1,15 @@
 
-
-
 package com.survivingcodingbootcamp.blog.storage;
-import com.survivingcodingbootcamp.blog.model.HashTag;
 
-public interface HashTagStorage {
+import com.survivingcodingbootcamp.blog.model.Hashtag;
 
-    Iterable<HashTag> retrieveAllHashTags();
+public interface HashtagStorage {
 
-    Iterable<HashTag> retrieveAllHashTag();
+    Iterable<Hashtag> retrieveAllHashtags();
 
-HashTag retrieveHashTagById(long l);
+    Iterable<Hashtag> retrieveAllHashTag();
 
-  void save(HashTag hashtagToAdd);
+    Hashtag retrieveHashtagById(long l);
+
+    void save(Hashtag hashtagToAdd);
 }

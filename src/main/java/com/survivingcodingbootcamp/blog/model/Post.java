@@ -16,13 +16,13 @@ public class Post {
     @Lob
     private String content;
     @ManyToMany(mappedBy ="posts")
-private Collection<HashTag>hashTags;
+    private Collection<Hashtag>hashTags;
 
-    public Post(Collection<HashTag> hashTags) {
+    public Post(Collection<Hashtag> hashTags) {
         this.hashTags = hashTags;
     }
 
-    public Collection<HashTag> getHashTags() {
+    public Collection<Hashtag> getHashTags() {
         return hashTags;
     }
 
