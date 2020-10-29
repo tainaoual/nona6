@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html
         lang="en"
@@ -29,17 +30,24 @@
             <h2 class="topics__title main-content__title">hashtag</h2>
             <nav class="main-content__nav topics__nav">
                 <lu>
-                    <li><a th:each="hashtag:${post.hashtags}" th:text="${hashtag .title}"> </a>
+                    <li><a th:each="hashtag:${allHashtags}" th:text="${hashtag}"> </a></li>
+                    <!--  <li><a th:each="allHashtags : ${hashtag}" th:text="${hashtag.title}" th:href="'/hashtag/'+${hashtag.id}" href="#"
+                          class="topics__nav-link"></a> </li> -->
 
-                        author name</a> nona</li>
+                    <li> <!--/*@thymesVar id="hashtag" type=""*/-->
                 </lu>
+                <form th:action="'/hashtag/add' "method="Post" class="hashtag-form">
+                    <!--/*@thymesVar id="title" type=""*/-->
+                    <input type="text" name="title">
+                    <button type="submit">nona is lost </button>
+                </form>
 
                 <a> Singular </a>
                 <a> Category</a>
-              !
+
             </nav>
         </section>
     </main>
-    </div>
+</div>
 </body>
 </html>

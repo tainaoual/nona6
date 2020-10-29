@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html
         lang="en"
@@ -29,12 +30,20 @@
         <section class="main-content__topics topics">
             <h2 class="topics__title main-content__title">Topics</h2>
             <nav class="main-content__nav topics__nav">
+                <ul><li
+                        th:each="hashtag:${topics.hashtags}">
+                    <a th:text = "${topics}" th:href="'Hashtag/' + ${topics}">#nona</a>
+
+
+                </li></ul>
+
+
                 <a> Singular </a>
                 <a> Category</a>
 
             </nav>
         </section>
     </main>
-    </div>
+</div>
 </body>
 </html>
